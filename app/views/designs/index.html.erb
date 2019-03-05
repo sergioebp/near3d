@@ -1,0 +1,19 @@
+<h1>Bienvenido a Near3d</h1>
+<p>Aqui podrás encontrar impresoras 3d disponibles cerca de ti. </p>
+
+<h2>Tecnologías</h2>
+<ul>
+    <% @technologies.each do |technology| %>
+        <li><a href='<%= technologies_path %>#tech<%= technology.id %>'><%= technology.name %></a></li>
+    <% end %>
+</ul>
+
+<% if user_signed_in? %>
+        <h3>Ayudanos a mejorar con una sugerencia</h3>
+    <%= form_with(model: Suggestion.new) do |f| %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+
+        <%= f.submit %>
+    <% end %>
+<% end %>

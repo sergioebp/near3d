@@ -1,0 +1,6 @@
+<% @technologies.each do |technology| %>
+    <A name='tech<%= technology.id %>'><h2><%= technology.name %></h2></a>
+    <p><%= technology.description %></p>
+<% end %>
+
+<%= link_to 'volver', root_path %>
