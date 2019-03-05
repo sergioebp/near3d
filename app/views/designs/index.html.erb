@@ -1,6 +1,35 @@
 <h1>Bienvenido a Near3d</h1>
 <p>Aqui podrás encontrar impresoras 3d disponibles cerca de ti. </p>
 
+<% if user_signed_in? %>
+    <h3>Sube tu diseño</h3>
+    <%= form_with(model: Design.new) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+
+        <%= f.label :public %>
+        <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+
+        <%= f.submit %>
+    <% end %>
+<% end %>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+    </tr>
+        <% @designs.each do |design| %>
+            <tr>
+                <td><%= design.name %></td>
+                <td><%= design.description %></td>
+            </tr>
+        <% end %>
+</table>
+
 <h2>Tecnologías</h2>
 <ul>
     <% @technologies.each do |technology| %>
@@ -9,11 +38,17 @@
 </ul>
 
 <% if user_signed_in? %>
-        <h3>Ayudanos a mejorar con una sugerencia</h3>
-    <%= form_with(model: Suggestion.new) do |f| %>
+        <h4>Ayudanos a mejorar con una sugerencia</h4>
+    <%= form_with(model: @suggestion) do |f| %>
         <%= f.label :content %>
-        <%= f.text_field :content %>
+        <%= f.text_area :content %>
 
         <%= f.submit %>
     <% end %>
+<% end %>
+
+<% if can? :create, Suggestion %>
+    pasa
+<% else %>
+    no pasa
 <% end %>

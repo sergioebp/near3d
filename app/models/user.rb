@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         enum role: %i[client vendor admin guest]
+
   has_many :designs, dependent: :destroy
   has_many :suggestions, dependent: :destroy
 end
