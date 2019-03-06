@@ -1,0 +1,16 @@
+<tr>
+    <td><%= design.name %></td>
+    <td><%= design.description %></td>
+    <td><%= design.user.name %></td>
+    <td>
+        <%if user_signed_in? %>
+            <% if design.user.id == current_user.id %>
+                <% if design.public %>
+                    Público
+                <% else %>
+                    Privado
+                <% end %>
+            <% end %>
+        <% end %>
+    </td>
+</tr>

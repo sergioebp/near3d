@@ -37,11 +37,13 @@ class Ability
       can :read, Design, user_id: user.id
       can :create, Suggestion
       can :create, Design
+      can [:edit, :update, :destroy], Design, user_id: user.id
     elsif user.vendor?
       can :read, Design, public: true
       can :read, Design, user_id: user.id
       can :create, Suggestion
       can :create, Design
+      can [:edit, :update, :destroy], Design, user_id: user.id
     elsif user.admin?
       can :manage, :all
     else

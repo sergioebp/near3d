@@ -17,17 +17,21 @@
     <% end %>
 <% end %>
 
+<h5>buscar</h5>
+<input type="text" id="buscador" size="20"/>
+
 <table>
-    <tr>
-        <th>Nombre</th>
-        <th>Descripción</th>
-    </tr>
-        <% @designs.each do |design| %>
-            <tr>
-                <td><%= design.name %></td>
-                <td><%= design.description %></td>
-            </tr>
-        <% end %>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Subido por</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody id='designs'>
+        <%= render @designs %>
+    </tbody>
 </table>
 
 <h2>Tecnologías</h2>
@@ -47,8 +51,21 @@
     <% end %>
 <% end %>
 
-<% if can? :create, Suggestion %>
+<% if can? :update, Design %>
     pasa
 <% else %>
     no pasa
 <% end %>
+<script>
+    $('#buscador').keyup(function(){
+        $.ajax({
+        type: "GET",
+        url: "<%= designs_path %>",
+        data: {buscador: $(this).val()},
+        dataType: "script",
+        success: function (response) {
+            
+        }
+    });
+    })
+</script>
