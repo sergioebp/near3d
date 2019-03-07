@@ -1,61 +1,80 @@
 <h1>Bienvenido a Near3d</h1>
 <p>Aqui podrás encontrar impresoras 3d disponibles cerca de ti. </p>
 
-<% if user_signed_in? %>
-    <h3>Sube tu diseño</h3>
-    <%= form_with(model: Design.new) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+<!--formulario de creación de diseño-->
+<div class='container'>
+    <% if user_signed_in? %>
+        <h3>Sube tu diseño</h3>
+        <%= form_with(model: Design.new) do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
 
-        <%= f.label :description %>
-        <%= f.text_area :description %>
+            <%= f.label :description %>
+            <%= f.text_area :description %>
 
-        <%= f.label :public %>
-        <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+            <%= f.label :file %>
+            <%= f.file_field :file %>
 
-        <%= f.submit %>
+            <%= f.label :public %>
+            <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+
+            <%= f.submit %>
+        <% end %>
     <% end %>
-<% end %>
+</div>
 
-<h5>buscar</h5>
-<input type="text" id="buscador" size="20"/>
+<!--listado de diseños-->
+<div class='container'>
+    <h5>buscar</h5>
+    <input type="text" id="buscador" size="20"/>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Subido por</th>
-            <th>Estado</th>
-        </tr>
-    </thead>
-    <tbody id='designs'>
-        <%= render @designs %>
-    </tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Subido por</th>
+                <% if user_signed_in? %>
+                    <th>Estado</th>
+                <% end %>
+            </tr>
+        </thead>
+        <tbody id='designs'>
+            <%= render @designs %>
+        </tbody>
+    </table>
+</div>
 
-<h2>Tecnologías</h2>
-<ul>
-    <% @technologies.each do |technology| %>
-        <li><a href='<%= technologies_path %>#tech<%= technology.id %>'><%= technology.name %></a></li>
+<!--listado de tecnologías-->
+<div class='container'>
+    <h2>Tecnologías</h2>
+    <ul>
+        <% @technologies.each do |technology| %>
+            <li><a href='<%= technologies_path %>#tech<%= technology.id %>'><%= technology.name %></a></li>
+        <% end %>
+    </ul>
+</div>
+
+<!--formulario de creación de sugerencias-->
+<div class='container'>
+    <% if user_signed_in? %>
+            <h4>Ayudanos a mejorar con una sugerencia</h4>
+        <%= form_with(model: @suggestion) do |f| %>
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+
+            <%= f.submit %>
+        <% end %>
     <% end %>
-</ul>
 
-<% if user_signed_in? %>
-        <h4>Ayudanos a mejorar con una sugerencia</h4>
-    <%= form_with(model: @suggestion) do |f| %>
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-
-        <%= f.submit %>
+    <% if can? :update, Design %>
+        pasa
+    <% else %>
+        no pasa
     <% end %>
-<% end %>
+</div>
 
-<% if can? :update, Design %>
-    pasa
-<% else %>
-    no pasa
-<% end %>
+<!--petición ajax para buscador-->
 <script>
     $('#buscador').keyup(function(){
         $.ajax({

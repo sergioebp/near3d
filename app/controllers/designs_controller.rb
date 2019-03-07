@@ -1,4 +1,6 @@
 class DesignsController < ApplicationController
+  before_action :set_design, only: [:show]
+
   def index
     if user_signed_in?
       @designs = Design.where("(public = true) or (user_id = #{current_user.id})").order(id: :desc)
@@ -37,7 +39,6 @@ class DesignsController < ApplicationController
   end
 
   def show 
-    @design = Design.find(params[:id])
   end
 
   def create
@@ -45,9 +46,17 @@ class DesignsController < ApplicationController
       name: params[:design][:name],
       description: params[:design][:description],
       public: params[:public],
-      user: current_user
+      user: current_user,
+      file: params[:design][:file]
       )
     @design.save
     respond_to :js
   end
+
+  private
+    def set_design
+      @design = Design.find(params[:id])
+    end
+
+    
 end

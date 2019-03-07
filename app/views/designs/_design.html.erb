@@ -2,15 +2,22 @@
     <td><%= design.name %></td>
     <td><%= design.description %></td>
     <td><%= design.user.name %></td>
-    <td>
-        <%if user_signed_in? %>
-            <% if design.user.id == current_user.id %>
-                <% if design.public %>
-                    Público
-                <% else %>
-                    Privado
-                <% end %>
+    <%if user_signed_in? %>
+        <% if design.user.id == current_user.id %>
+            <% if design.public %>
+                <td>Público</td>
+            <% else %>
+                <td>Privado</td>
             <% end %>
+        <% else %>
+            <td></td>
+        <% end %>
+    <% end %>
+    <td>
+        <% if design.file.attached? %>
+            <%= link_to 'mostrar', design_path(design.id) %>
+        <% else %>
+            Vacio
         <% end %>
     </td>
 </tr>

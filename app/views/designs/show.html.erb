@@ -1,0 +1,5 @@
+<h2><%= @design.name %></h2>
+<h6>Subido por <%= @design.user.name %><h6>
+
+
+<%= link_to "Descargar #{@design.file.filename}", rails_blob_path(@design.file, disposition: 'attachment') %>

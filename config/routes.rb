@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :technologies, only: :index
   resources :suggestions, only: :create
   
+  
   root 'designs#index'
 end
