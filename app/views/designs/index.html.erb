@@ -5,21 +5,7 @@
 <div class='container'>
     <% if user_signed_in? %>
         <h3>Sube tu diseño</h3>
-        <%= form_with(model: Design.new) do |f| %>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-
-            <%= f.label :description %>
-            <%= f.text_area :description %>
-
-            <%= f.label :file %>
-            <%= f.file_field :file %>
-
-            <%= f.label :public %>
-            <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
-
-            <%= f.submit %>
-        <% end %>
+        <%= render 'form', design: @design %>
     <% end %>
 </div>
 
@@ -36,6 +22,10 @@
                 <th>Subido por</th>
                 <% if user_signed_in? %>
                     <th>Estado</th>
+                <% end %>
+                <% if user_signed_in? %>
+                    <th><!--editar--></th>
+                    <th><!--eliminar--></th>
                 <% end %>
             </tr>
         </thead>

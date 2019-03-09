@@ -1,4 +1,4 @@
-<tr>
+<tr id='<%= design.id %>'>
     <td><%= design.name %></td>
     <td><%= design.description %></td>
     <td><%= design.user.name %></td>
@@ -20,4 +20,12 @@
             Vacio
         <% end %>
     </td>
+    <% if user_signed_in? && design.user.id == current_user.id %>
+        <td>
+            <%= link_to 'Editar', edit_design_path(design.id), data: {remote: true } %>
+        </td>
+        <td>
+            <%= link_to 'Eliminar', design, method: :delete, data: { confirm: 'Seguro?', remote: true } %>
+        </td>
+    <% end %>
 </tr>

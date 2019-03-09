@@ -1,5 +1,5 @@
 class DesignsController < ApplicationController
-  before_action :set_design, only: [:show]
+  before_action :set_design, only: [:show, :destroy, :edit, :update]
 
   def index
     if user_signed_in?
@@ -50,6 +50,24 @@ class DesignsController < ApplicationController
       file: params[:design][:file]
       )
     @design.save
+    respond_to :js
+  end
+
+  def edit
+    respond_to :js
+  end
+
+  def update
+    @design.name = params[:design][:name]
+    @design.description = params[:design][:description]
+    @design.public = params[:public]
+    @design.file = params[:design][:file]
+    @design.save
+    respond_to :js
+  end
+
+  def destroy 
+    @design.destroy 
     respond_to :js
   end
 
