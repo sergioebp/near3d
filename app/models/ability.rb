@@ -34,20 +34,24 @@ class Ability
     user ||= User.new(role: 3)
     if user.client?
       can :read, Design, public: true
-      can :read, Design, user_id: user.id
       can :create, Suggestion
       can :create, Design
-      can [:edit, :update, :destroy], Design, user_id: user.id
+      can [:read, :edit, :update, :destroy], Design, user_id: user.id
+      can :read, Store, active: true
     elsif user.vendor?
       can :read, Design, public: true
-      can :read, Design, user_id: user.id
       can :create, Suggestion
       can :create, Design
-      can [:edit, :update, :destroy], Design, user_id: user.id
+      can [:read, :edit, :update, :destroy], Design, user_id: user.id
+      can :read, Store, active: true
+      can [:read, :edit, :update, :destroy], Store do |store|
+        store.users.where("user_id = #{current_user.id}").present?
+      end
     elsif user.admin?
       can :manage, :all
     else
       can :read, Design, public: true
+      can :read, Store, active: true
     end
   end
 end

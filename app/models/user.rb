@@ -8,4 +8,7 @@ class User < ApplicationRecord
 
   has_many :designs, dependent: :destroy
   has_many :suggestions, dependent: :destroy
+
+  has_many :Userstores, dependent: :destroy
+  has_many :stores, through: :Userstores
 end

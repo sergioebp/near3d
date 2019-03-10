@@ -61,7 +61,9 @@ class DesignsController < ApplicationController
     @design.name = params[:design][:name]
     @design.description = params[:design][:description]
     @design.public = params[:public]
-    @design.file = params[:design][:file]
+    if params[:design][:file].present?
+      @design.file = params[:design][:file]
+    end
     @design.save
     respond_to :js
   end

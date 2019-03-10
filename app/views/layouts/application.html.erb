@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="<%= root_path %>">Inicio</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +28,7 @@
           <% else %>
             <a class="nav-link" href="<%= new_user_session_path %>">Iniciar sesión<span class="sr-only">(current)</span></a>
           <% end %>
+          <%= link_to 'Tiendas', stores_path, class: 'nav-link' %>
           <% if user_signed_in? %>
             <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           <% else %>
@@ -35,6 +37,7 @@
         </div>
       </div>
     </nav>
+    <!--modal-->
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -50,6 +53,13 @@
         </div>
       </div>
     </div>
+    <!--notice y alert-->
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <div class='container'>
       <%= yield %>
     </div>

@@ -1,15 +1,15 @@
 <%= form_with(model: @design) do |f| %>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-            <%= f.label :description %>
-            <%= f.text_area :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
 
-            <%= f.label :file %>
-            <%= f.file_field :file %>
+    <%= f.label :file %>
+    <%= f.file_field :file %>
 
-            <%= f.label :public %>
-            <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+    <%= f.label :public %>
+    <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
 
-            <%= f.submit %>
-        <% end %>
+    <%= f.submit %>
+<% end %>
