@@ -1,5 +1,55 @@
-<h1>Stores#index</h1>
-<p>Find me in app/views/stores/index.html.erb</p>
 <h4>tienes una impresora 3d y sabes usarla?</h4>
 <%= link_to 'Crea tu tienda', new_store_path  %>
 
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>nombre</th>
+            <th>descripción</th>
+            <th>dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= render @stores %>
+    </tbody>
+</table>
+
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+        provider: {
+        disableDefaultUI: true
+        // pass in other Google Maps API options here
+        },
+        internal: {
+        id: 'map'
+        }
+    },
+    function(){
+        markers = handler.addMarkers([
+        {
+            "lat": 0,
+            "lng": 0,
+            "picture": {
+            "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+            "width":  32,
+            "height": 32
+            },
+            "infowindow": "hello!"
+        }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+    }
+    );
+</script>
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    });
+</script>

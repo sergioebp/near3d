@@ -1,5 +1,7 @@
 {
   "name": "Near3d",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
 }

@@ -1,6 +1,13 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.all.where('active = true')
+    @stores = Store.where('active = true')
+    if user_signed_in?
+      @my_stores = current_user.stores 
+    end
+    @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+      marker.lat store.latitude
+      marker.lng store.longitude
+    end
   end
 
   def show
