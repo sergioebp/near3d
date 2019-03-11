@@ -47,6 +47,8 @@ class Ability
       can [:read, :edit, :update, :destroy], Store do |store|
         store.users.where("user_id = #{current_user.id}").present?
       end
+      can :create, Userstore
+      can :delete, Userstore, user_id: user.id
     elsif user.admin?
       can :manage, :all
     else

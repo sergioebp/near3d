@@ -5,6 +5,9 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
 
+    <%= f.label :active %>
+    <%= select_tag "active", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+
     <%= f.label :address %>
     <%= f.text_field :address %>
 

@@ -26,6 +26,7 @@ class StoresController < ApplicationController
       name: params[:store][:name],
       description: params[:store][:description],
       address: params[:store][:address],
+      active: params[:active],
       latitude: params[:store][:latitude],
       longitude: params[:store][:longitude]
     )
@@ -38,7 +39,7 @@ class StoresController < ApplicationController
     end
     @store.users << current_user
     @store.save
-    if current_user.role == 0
+    if current_user.role == 'client'
       current_user.role = 1
       current_user.save
     end
@@ -52,6 +53,7 @@ class StoresController < ApplicationController
     @store.name = params[:store][:name]
     @store.description = params[:store][:description]
     @store.address = params[:store][:address]
+    @store.active = params[:active]
     @store.latitude = params[:store][:latitude]
     @store.longitude = params[:store][:longitude]
     @store.save

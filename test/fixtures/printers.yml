@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store: one
+  base_price: 1
+  hour_price: 1
+  description: MyString
+  dimentions: 
+
+two:
+  store: two
+  base_price: 1
+  hour_price: 1
+  description: MyString
+  dimentions: 
