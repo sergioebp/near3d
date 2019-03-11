@@ -1,3 +1,33 @@
+<% if @my_store %>
+    <h5>asociar vendedor a esta tienda<h5>
+    <%= form_with url: stores_add_vendor_store_path(@store), method: :post do |f|%>
+        <h6>ingresa el id del nuevo vendedor</h6>
+        <%= f.text_field :userid%>
+        <%= f.submit 'enviar' %>
+    <% end %>
+<% end %>
+
+<h5>quienes administran esta tienda</h5>
+<table>
+    <thead>
+        <tr>
+            <th>nombre</th>
+            <th>correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @admin_users.each do |user| %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<% if @my_store %>
+    <%= link_to 'renunciar', userstore_path(@store.id), method: :delete, data: { confirm: 'Seguro que quieres renunciar a esta tienda?, si eres el único admin la tienda será eliminada' } %>
+<% end %>
 
 <h4><%= @store.latitude %></h4>
 <h4><%= @store.longitude %></h4>

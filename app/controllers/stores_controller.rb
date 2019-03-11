@@ -14,6 +14,7 @@ class StoresController < ApplicationController
 
   def show
     @my_store = @store.users.where("user_id = #{current_user.id}").present?
+    @admin_users = @store.users
   end
 
   def new 
@@ -37,8 +38,10 @@ class StoresController < ApplicationController
     end
     @store.users << current_user
     @store.save
-    current_user.role = 1
-    current_user.save
+    if current_user.role == 0
+      current_user.role = 1
+      current_user.save
+    end
     redirect_to store_path(@store)
   end
 
@@ -63,12 +66,26 @@ class StoresController < ApplicationController
 
   def destroy
     @store.destroy
-    if !(current_user.stores.present?)
+    if !(current_user.stores.present?) && current_user.role == 'vendor'
       current_user.role = 0
       current_user.save
     end
     redirect_to stores_path
   end
+
+  def add_vendor
+    @store = Store.find(params[:id])
+    new_vendor = User.find(params[:userid])
+    @store.users << new_vendor
+    @store.save
+    if new_vendor.role == 0
+      new_vendor.role = 1
+      new_vendor.save
+    end 
+    redirect_to store_path(@store)
+  end
+
+
 
   private
     def set_store
