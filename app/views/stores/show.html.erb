@@ -1,6 +1,13 @@
-<h1>Stores#show</h1>
-<p>Find me in app/views/stores/show.html.erb</p>
 
 <h4><%= @store.latitude %></h4>
 <h4><%= @store.longitude %></h4>
+
+<%= link_to 'atrás', stores_path %>
+
+<% if @my_store %>
+    <%= link_to 'editar', edit_store_path(@store.id) %>
+    <%= link_to 'eliminar tienda', @store, method: :delete, data: { confirm: 'Seguro?' } %>
+<% else %>
+    <h5>no pasa<h5>
+<% end %>
 

@@ -1,10 +1,30 @@
+<!--mis tiendas-->
+<% if user_signed_in? %>
+    <% if current_user.role == 'vendor' %>
+        <h2>Mis tiendas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>nombre</th>
+                    <th>descripción</th>
+                    <th>dirección</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render @my_stores %>
+            </tbody>
+        </table>
+    <% end %>
+<% end %>
+
 <h4>tienes una impresora 3d y sabes usarla?</h4>
 <%= link_to 'Crea tu tienda', new_store_path  %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
+<!--lista de tiendas activas-->
 <table>
     <thead>
         <tr>
