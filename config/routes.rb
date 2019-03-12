@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :technologies, only: :index
   resources :suggestions, only: :create
   resources :stores do 
-    resources :printers, only: [:show, :create, :edit, :update, :destroy]  
+    resources :printers
     member do
       post 'stores/add_vendor'
     end

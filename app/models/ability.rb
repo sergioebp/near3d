@@ -36,19 +36,23 @@ class Ability
       can :read, Design, public: true
       can :create, Suggestion
       can :create, Design
-      can [:read, :edit, :update, :destroy], Design, user_id: user.id
+      can :manage, Design, user_id: user.id
       can :read, Store, active: true
+      can :read, Printer
     elsif user.vendor?
       can :read, Design, public: true
       can :create, Suggestion
       can :create, Design
-      can [:read, :edit, :update, :destroy], Design, user_id: user.id
+      can :manage, Design, user_id: user.id
       can :read, Store, active: true
       can [:read, :edit, :update, :destroy], Store do |store|
         store.users.where("user_id = #{current_user.id}").present?
       end
       can :create, Userstore
       can :delete, Userstore, user_id: user.id
+      can :manage, Printer do |printer|
+        printer.store.users.where("user_id = #{current_user.id}").present?
+      end
     elsif user.admin?
       can :manage, :all
     else
