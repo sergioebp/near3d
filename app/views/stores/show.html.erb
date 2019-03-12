@@ -1,10 +1,6 @@
 <% if @my_store %>
-    <h5>asociar vendedor a esta tienda<h5>
-    <%= form_with url: stores_add_vendor_store_path(@store), method: :post do |f|%>
-        <h6>ingresa el id del nuevo vendedor</h6>
-        <%= f.text_field :userid%>
-        <%= f.submit 'enviar' %>
-    <% end %>
+    <%= link_to 'editar tienda', edit_store_path(@store.id) %> <br>
+    <%= link_to 'eliminar tienda', @store, method: :delete, data: { confirm: 'Seguro?' } %>
 <% end %>
 
 <h5>quienes administran esta tienda</h5>
@@ -29,15 +25,73 @@
     <%= link_to 'renunciar', userstore_path(@store.id), method: :delete, data: { confirm: 'Seguro que quieres renunciar a esta tienda?, si eres el único admin la tienda será eliminada' } %>
 <% end %>
 
-<h4><%= @store.latitude %></h4>
-<h4><%= @store.longitude %></h4>
-
-<%= link_to 'atrás', stores_path %>
-
 <% if @my_store %>
-    <%= link_to 'editar', edit_store_path(@store.id) %>
-    <%= link_to 'eliminar tienda', @store, method: :delete, data: { confirm: 'Seguro?' } %>
-<% else %>
-    <h5>no pasa<h5>
+    <h5>asociar vendedor a esta tienda<h5>
+    <%= form_with url: stores_add_vendor_store_path(@store), method: :post do |f|%>
+        <h6>ingresa el id del nuevo vendedor</h6>
+        <%= f.text_field :userid%>
+        <%= f.submit 'enviar' %>
+    <% end %>
 <% end %>
 
+<!--formulario de creación de impresoras-->
+<% if @my_store %>
+    <h5>crear una impresora</h5>
+    <%= form_with(model: [@store, @printer], local: true) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :base_price %>
+        <%= f.number_field :base_price %>
+
+        <%= f.label :hour_price %>
+        <%= f.number_field :hour_price %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+
+        <h5>medidas en centímetros</h5>
+
+        <%= f.label :dimention_x %>
+        <%= f.number_field :dimention_x %>
+
+        <%= f.label :dimention_y %>
+        <%= f.number_field :dimention_y %>
+
+        <%= f.label :dimention_z %>
+        <%= f.number_field :dimention_z %>
+
+        <%= f.submit %>
+    <% end %>
+<% end %>
+
+<!--lista de impresoras-->
+<table>
+    <thead>
+        <tr>
+            <th>foto</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>dimensiones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @printers.each do |printer| %>
+            <tr>
+                <% if printer.image.attached? %>
+                    <td><%= image_tag printer.image, size: '100x100' %></td>
+                <% else %>
+                    <td></td>
+                <% end %>
+                <td><%= printer.name %></td>
+                <td><%= printer.description %></td>
+                <td><%= printer.dimention_x %> cm x <%= printer.dimention_y %> cm x <%= printer.dimention_z %> cm</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'atrás', stores_path %>

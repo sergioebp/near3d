@@ -15,6 +15,8 @@ class StoresController < ApplicationController
   def show
     @my_store = @store.users.where("user_id = #{current_user.id}").present?
     @admin_users = @store.users
+    @printer = Printer.new
+    @printers = @store.printers
   end
 
   def new 

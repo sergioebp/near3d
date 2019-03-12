@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_212454) do
+ActiveRecord::Schema.define(version: 2019_03_11_220756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_212454) do
     t.float "dimention_x"
     t.float "dimention_y"
     t.float "dimention_z"
+    t.string "name"
     t.index ["store_id"], name: "index_printers_on_store_id"
   end
 
