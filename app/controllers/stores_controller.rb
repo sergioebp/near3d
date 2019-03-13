@@ -29,8 +29,6 @@ class StoresController < ApplicationController
       description: params[:store][:description],
       address: params[:store][:address],
       active: params[:active],
-      latitude: params[:store][:latitude],
-      longitude: params[:store][:longitude]
     )
     @store.save
     if @store.latitude.nil? || @store.longitude.nil?

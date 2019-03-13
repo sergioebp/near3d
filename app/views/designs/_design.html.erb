@@ -1,18 +1,6 @@
 <tr id='<%= design.id %>'>
     <td><%= design.name %></td>
-    <td><%= design.description %></td>
     <td><%= design.user.name %></td>
-    <%if user_signed_in? %>
-        <% if design.user.id == current_user.id %>
-            <% if design.public %>
-                <td>Público</td>
-            <% else %>
-                <td>Privado</td>
-            <% end %>
-        <% else %>
-            <td></td>
-        <% end %>
-    <% end %>
     <td>
         <% if design.file.attached? %>
             <%= link_to 'mostrar', design_path(design.id) %>
@@ -20,12 +8,17 @@
             Vacio
         <% end %>
     </td>
-    <% if user_signed_in? && design.user.id == current_user.id %>
-        <td>
-            <%= link_to 'Editar', edit_design_path(design.id), data: {remote: true } %>
-        </td>
-        <td>
-            <%= link_to 'Eliminar', design, method: :delete, data: { confirm: 'Seguro?', remote: true } %>
-        </td>
+    <% if user_signed_in? %>
+        <% if design.user.id == current_user.id %>
+            <td>
+                <%= link_to 'Editar', edit_design_path(design.id), data: {remote: true } %>
+            </td>
+            <td>
+                <%= link_to 'Eliminar', design, method: :delete, data: { confirm: 'Seguro que quiere eliminar este diseño?', remote: true } %>
+            </td>
+        <% else %>
+            <td></td>
+            <td></td>
+        <% end %>
     <% end %>
 </tr>

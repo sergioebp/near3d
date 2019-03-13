@@ -36,41 +36,43 @@
 
 <!--formulario de creación de impresoras-->
 <% if @my_store %>
-    <%= link_to 'Crea una impresora', new_store_printer_path(@store, @printer) %>
+    <%= link_to 'Crea una impresora', new_store_printer_path(@store, @printer) %><br>
 <% end %>
 
 <!--lista de impresoras-->
-<table>
-    <thead>
-        <tr>
-            <th>foto</th>
-            <th>Nombre</th>
-            <th>dimensiones</th>
-            <th></th>
-            <% if @my_store %>
+<% if @printers.present? %>
+    <table>
+        <thead>
+            <tr>
+                <th>foto</th>
+                <th>Nombre</th>
+                <th>dimensiones</th>
                 <th></th>
-                <th></th>
-            <% end %>
-        </tr>
-    </thead>
-    <tbody>
-        <% @printers.each do |printer| %>
-            <tr id="<%= printer.id %>">
-                <% if printer.image.attached? %>
-                    <td><%= image_tag printer.image, size: '100x100' %></td>
-                <% else %>
-                    <td></td>
-                <% end %>
-                <td><%= printer.name %></td>
-                <td><%= printer.dimention_x %> mm x <%= printer.dimention_y %> mm x <%= printer.dimention_z %> mm</td>
-                <td><%= link_to 'Ver', store_printer_path(@store, printer) %></td>
                 <% if @my_store %>
-                    <td><%= link_to 'Editar', edit_store_printer_path(@store, printer) %></td>
-                    <td><%= link_to 'Eliminar', store_printer_path(@store, printer), method: :delete, data: { confirm: 'Seguro?', remote: true }  %></td>
+                    <th></th>
+                    <th></th>
                 <% end %>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @printers.each do |printer| %>
+                <tr id="<%= printer.id %>">
+                    <% if printer.image.attached? %>
+                        <td><%= image_tag printer.image, size: '100x100' %></td>
+                    <% else %>
+                        <td></td>
+                    <% end %>
+                    <td><%= printer.name %></td>
+                    <td><%= printer.dimention_x %> mm x <%= printer.dimention_y %> mm x <%= printer.dimention_z %> mm</td>
+                    <td><%= link_to 'Ver', store_printer_path(@store, printer) %></td>
+                    <% if @my_store %>
+                        <td><%= link_to 'Editar', edit_store_printer_path(@store, printer) %></td>
+                        <td><%= link_to 'Eliminar', store_printer_path(@store, printer), method: :delete, data: { confirm: 'Seguro?', remote: true }  %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
 
 <%= link_to 'atrás', stores_path %>

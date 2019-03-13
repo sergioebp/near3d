@@ -4,14 +4,27 @@ src: url("<%= asset_path 'avant_garde_book_bt-webfont.ttf' %>");
 }
 
 body{
-    font-family:'avant_garde_book_bt';
     background-color: rgb(27, 0, 53);
     background-image:url("<%= asset_path 'fondo-2.jpg' %>");
-    background-size:contain;
+    background-size:100%;
     background-repeat:no-repeat;
     color: white;
+    font-size: 1.2rem;
+}
+
+h1,h2,h3,h4,h5,h6,p,th,td{
+    font-family:'avant_garde_book_bt';
 }
 
 a{
-    color: #d3d3d3
+    font-family:'avant_garde_book_bt';
+    color: #d3d3d3;
+}
+
+.white{
+    color: white;
+}
+
+.modal{
+    color: black;
 }

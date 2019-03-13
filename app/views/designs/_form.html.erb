@@ -1,6 +1,12 @@
 <%= form_with(model: @design) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <div class="row">
+        <div class="col-25">
+            <%= f.label 'Nombre' %>
+        </div>
+        <div class="col-75">
+        <%= f.text_field :name %>
+        </div>
+    </div>
 
     <%= f.label :description %>
     <%= f.text_area :description %>
@@ -11,5 +17,5 @@
     <%= f.label :public %>
     <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
 
-    <%= f.submit %>
+    <%= f.submit 'Crear diseño' %>
 <% end %>

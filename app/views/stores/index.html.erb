@@ -2,8 +2,8 @@
 <% if user_signed_in? %>
     <% if current_user.role == 'vendor' %>
         <h2>Mis tiendas</h2>
-        <table>
-            <thead>
+        <table class='table'>
+            <thead class='thead-dark'>
                 <tr>
                     <th>nombre</th>
                     <th>descripción</th>
@@ -11,32 +11,35 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class='white'>
                 <%= render @my_stores %>
             </tbody>
         </table>
     <% end %>
 <% end %>
 
-<% if current_user.role == 'client' %>
-    <h4>tienes una impresora 3d y sabes usarla?</h4>
+<% if user_signed_in? %>
+    <% if current_user.role == 'client' %>
+        <h4>tienes una impresora 3d y sabes usarla?</h4>
+    <% end %>
+    <%= link_to 'Crea tu tienda', new_store_path  %>
 <% end %>
-<%= link_to 'Crea tu tienda', new_store_path  %>
 
 <!--mapa-->
 <%# <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div> %>
 <!--lista de tiendas activas-->
-<table>
-    <thead>
+<table class="table">
+    <thead class='thead-dark'>
         <tr>
             <th>nombre</th>
             <th>descripción</th>
             <th>dirección</th>
+            <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class='white'>
         <%= render @stores %>
     </tbody>
 </table>

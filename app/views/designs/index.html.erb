@@ -1,37 +1,31 @@
-<div>
+<div class='text-center'>
     <h1>Bienvenido a Near3d</h1>
     <p>Aqui podrás encontrar impresoras 3d disponibles cerca de ti. </p>
 </div>
 
 <!--formulario de creación de diseño-->
 <div class='container'>
-    <% if user_signed_in? %>
-        <h3>Sube tu diseño</h3>
-        <%= render 'form', design: @design %>
-    <% end %>
+    <div class="row">
+        <div class="col-6">
+            <% if user_signed_in? %>
+                <h3>Sube tu diseño</h3>
+                <%= render 'form', design: @design %>
+            <% end %>
+        </div>
+    </div>
 </div>
 
 <!--listado de diseños-->
 <div class='container'>
-    <h5>buscar</h5>
-    <input type="text" id="buscador" size="20"/>
-
-    <table>
+    <table class='table'>
         <thead class="table-dark">
             <tr>
                 <th>Nombre</th>
-                <th>Descripción</th>
                 <th>Subido por</th>
-                <% if user_signed_in? %>
-                    <th>Estado</th>
-                <% end %>
-                <% if user_signed_in? %>
-                    <th><!--editar--></th>
-                    <th><!--eliminar--></th>
-                <% end %>
+                <th colspan='3'><input type="text" id="buscador" size="12" placeholder="Buscar" class='float-right'/></th>
             </tr>
         </thead>
-        <tbody id='designs'>
+        <tbody id='designs' class='white'>
             <%= render @designs %>
         </tbody>
     </table>

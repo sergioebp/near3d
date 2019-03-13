@@ -1,5 +1,19 @@
 <h2><%= @design.name %></h2>
-<h6>Subido por <%= @design.user.name %><h6>
+<h5>Subido por: <%= @design.user.name %></h5>
+<%if user_signed_in? && @design.user.id == current_user.id %>
+    <% if @design.public %>
+        <h5>Estado: Público</h5>
+    <% else %>
+        <h5>Estado: Privado</h5>
+    <% end %>
+<% end %>
+
+<h3>Descripción</h3>
+<p><%= @design.description %></p>
 
 
-<%= link_to "Descargar #{@design.file.filename}", rails_blob_path(@design.file, disposition: 'attachment') %>
+
+
+<%= link_to "Descargar #{@design.file.filename}", rails_blob_path(@design.file, disposition: 'attachment') %><br>
+
+<%= link_to 'Atrás', root_path %>

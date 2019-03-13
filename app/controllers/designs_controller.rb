@@ -20,7 +20,7 @@ class DesignsController < ApplicationController
         end
           format.html
       else
-          if params[:buscador].length > 3
+          if params[:buscador].length > 2
             if user_signed_in?
             @designs = Design.where("name like ?", "%#{params[:buscador]}%").where("(public = true) or (user_id = #{current_user.id})").order(id: :desc)
             else
