@@ -28,3 +28,40 @@ a{
 .modal{
     color: black;
 }
+
+input[type=text], input[type=file], select, textarea {
+  width: 100%;
+  border: 1px ;
+  border-radius: 4px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.container {
+  padding: 20px;
+}
+
+thead{
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+}
+
+
+

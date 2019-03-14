@@ -2,8 +2,8 @@
 <% if user_signed_in? %>
     <% if current_user.role == 'vendor' %>
         <h2>Mis tiendas</h2>
-        <table class='table'>
-            <thead class='thead-dark'>
+        <table class='table' style="overflow-x:auto;">
+            <thead>
                 <tr>
                     <th>nombre</th>
                     <th>descripción</th>
@@ -30,8 +30,8 @@
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div> %>
 <!--lista de tiendas activas-->
-<table class="table">
-    <thead class='thead-dark'>
+<table class="table" style="overflow-x:auto;">
+    <thead>
         <tr>
             <th>nombre</th>
             <th>descripción</th>

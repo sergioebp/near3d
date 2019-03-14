@@ -1,8 +1,10 @@
+<!--links para editar y eliminar la tienda-->
 <% if @my_store %>
     <%= link_to 'editar tienda', edit_store_path(@store.id) %> <br>
     <%= link_to 'eliminar tienda', @store, method: :delete, data: { confirm: 'Seguro?' } %>
 <% end %>
 
+<!--lista de los dueños de la tienda-->
 <h5>quienes administran esta tienda</h5>
 <table>
     <thead>
@@ -25,8 +27,9 @@
     <%= link_to 'renunciar', userstore_path(@store.id), method: :delete, data: { confirm: 'Seguro que quieres renunciar a esta tienda?, si eres el único admin la tienda será eliminada' } %>
 <% end %>
 
+<!--formulario para añadir dueños-->
 <% if @my_store %>
-    <h5>asociar vendedor a esta tienda<h5>
+    <h5>asociar vendedor a esta tienda</h5>
     <%= form_with url: stores_add_vendor_store_path(@store), method: :post do |f|%>
         <h6>ingresa el id del nuevo vendedor</h6>
         <%= f.text_field :userid%>
@@ -41,7 +44,7 @@
 
 <!--lista de impresoras-->
 <% if @printers.present? %>
-    <table>
+    <table class='table table-responsive'>
         <thead>
             <tr>
                 <th>foto</th>
@@ -54,7 +57,7 @@
                 <% end %>
             </tr>
         </thead>
-        <tbody>
+        <tbody class='white'>
             <% @printers.each do |printer| %>
                 <tr id="<%= printer.id %>">
                     <% if printer.image.attached? %>

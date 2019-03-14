@@ -1,4 +1,5 @@
 <%= form_with(model: @design) do |f| %>
+
     <div class="row">
         <div class="col-25">
             <%= f.label 'Nombre' %>
@@ -8,14 +9,38 @@
         </div>
     </div>
 
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <div class='row'>
+        <div class='col-25'>
+            <%= f.label :description %>
+        </div>
+        <div class='col-75'>
+            <%= f.text_area :description %>
+        </div>
+    </div>
 
-    <%= f.label :file %>
-    <%= f.file_field :file %>
+    <div class='row'>
+        <div class='col-25'>
+            <%= f.label :file %>
+        </div>
+        <div class='col-75'>
+            <%= f.file_field :file %>
+        </div>
+    </div>
 
-    <%= f.label :public %>
-    <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+    <div class='row'>
+        <div class='col-25'>
+            <%= f.label :public %>
+        </div>
+        <div class='col-75'>
+            <%= select_tag "public", options_for_select([ "false", "true"]), {prompt: 'Seleccione una opción'} %>
+        </div>
+    </div>
 
-    <%= f.submit 'Crear diseño' %>
+    <div class='row'>
+        <% if @design.persisted? %>
+            <%= f.submit 'Editar diseño' %>
+        <% else %>
+            <%= f.submit 'Crear diseño' %>
+        <% end %>
+    </div>
 <% end %>
