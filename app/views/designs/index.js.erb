@@ -1,1 +1,5 @@
-$('#designs').html("<%= j render @designs %>")
+<% if @designs.any? %>
+    $('#designs').html("<%= j render @designs %>")
+<% else %>
+    $('#designs').html("<tr><td>No hay resultados</td></tr>")
+<% end %>

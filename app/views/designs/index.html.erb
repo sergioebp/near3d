@@ -13,7 +13,13 @@
             </tr>
         </thead>
         <tbody id='designs' class='white'>
-            <%= render @designs %>
+            <% if @designs.any? %>
+                <%= render @designs %>
+            <% else %>
+                <tr>
+                    <td>No hay resultados</td>
+                </tr>
+            <% end %>
         </tbody>
     </table>
 
