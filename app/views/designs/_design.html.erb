@@ -3,7 +3,7 @@
     <td><%= design.user.name %></td>
     <td>
         <% if design.file.attached? %>
-            <%= link_to 'mostrar', design_path(design.id) %>
+            <%= link_to 'mostrar', design_path(design.id), data:{turbolinks: false} %>
         <% else %>
             Vacio
         <% end %>

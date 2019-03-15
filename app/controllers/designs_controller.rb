@@ -39,6 +39,7 @@ class DesignsController < ApplicationController
   end
 
   def show 
+    @model_to_show = "https://s3.amazonaws.com/limbforgestls/EbeArm/Ebe_forearm_L/forearm_L_C4-200_L1-230.stl"
   end
 
   def create

@@ -8,12 +8,25 @@
     <% end %>
 <% end %>
 
+<div id='render'>
+</div>
+
 <h3>Descripción</h3>
 <p><%= @design.description %></p>
 
-
+<p><%=  %>
 
 
 <%= link_to "Descargar #{@design.file.filename}", rails_blob_path(@design.file, disposition: 'attachment') %><br>
 
 <%= link_to 'Atrás', root_path %>
+
+<script src="<%= asset_path 'three.js' %>"></script>
+<script src="<%= asset_path 'STLLoader.js' %>"></script>
+<script src="<%= asset_path 'Detector.js' %>"></script>
+<script src="<%= asset_path 'OrbitControls.js' %>"></script>
+<script src="<%= asset_path 'handLoader.js' %>"></script>
+
+<script>
+    init("<%= rails_blob_path(@design.file) %>");
+</script>

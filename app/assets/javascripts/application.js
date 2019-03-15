@@ -15,4 +15,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+
+//= require three
+//= require STLLoader
+//= require Detector
+//= require OrbitControls
+
+// require_tree .
