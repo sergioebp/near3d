@@ -49,7 +49,7 @@ end
 #Creación de impresoras
 impresora1 = Printer.new(name: 'Impresora 3d Finder', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "La impresora FlashForge Finder, a parte de ser muy bonita, es una impresora súper segura para usarse, funcional y eficaz, inclusive los más pequeños pueden usarla sin problemas. Esta impresora, es la indicada para la familia y que los pequeños se introduzcan en el  mundo de la impresión, ya que cuenta sólo con cama fría, por ende utiliza sólo filamentos PLA, que a su vez, es el material más seguro, dado que no es tóxico, por ser derivado de la fécula de maíz. Sin duda, la mejor opción llena de dinamismo, perfecto para toda la familia.", dimention_x: 140, dimention_y: 140, dimention_z: 140)
 impresora1.save
-impresora1.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_1.jpg'), filename: 'impresora_3d_1.jpg')
+impresora1.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_1.jpg')), filename: 'impresora_3d_1.jpg')
 
 impresora2 = Printer.new(name: 'Impresora 3d Prusa I3 A6 ', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "Area De Trabajo Util: 220mm*220mm*250mm
 Materiales que soporta: PLA, ABS, etc de 1.75mm
@@ -62,25 +62,25 @@ Soporta Formatos STL,G-code
 Soporta Memoria SD (Se la entrega con una memoria de 16Gb de regalo y lector usb de regalo)
 Incluye Display LCD y una perilla pera controlar toda la maquina (ademas incluye un buzzer con sonido).", dimention_x: 220, dimention_y: 220, dimention_z: 250)
 impresora2.save
-impresora2.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_2.jpg'), filename: 'impresora_3d_2.jpg')
+impresora2.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_2.jpg')), filename: 'impresora_3d_2.jpg')
 
 impresora3 = Printer.new(name: 'IMPRESORA 3D FORMLABS / FORM 2', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "EL CORAZÓN DE LA MÁQUINA ES UN MOTOR ÓPTICO DE GRAN ALCANCE, UN LÁSER DE PRECISIÓN DE 250 W, ES GUIADO POR GALVANÓMETROS HECHOS A MEDIDA, PARA ENTREGA IMPRESIONES GRANDES CON DETALLES ESPECTACULARES. LA MEJOR IMPRESORA 3D DE ESCRITORIO JAMÁS CREADA", dimention_x: 145, dimention_y: 145, dimention_z: 175)
 impresora3.save
-impresora3.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_3.png'), filename: 'impresora_3d_3.png')
+impresora3.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_3.png')), filename: 'impresora_3d_3.png')
 
 impresora4 = Printer.new(name: '3D KREATOR MOTION - Impresora 3D', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "La impresora 3D KREATOR MOTION fue desarrollada gracias a una colaboración entre el Departamento de Mecatrónica de la Facultad de Ingeniería Eléctrica de la Universidad Tecnológica de Silesia (Polonia) y el equipo de investigación científica formado los mejores ingenieros y profesionales de la Universidad AGH de ciencia y Tecnología de Cracovia (Polonia).
 
 Después de ser presentada delante del Parlamento Europeo conmemorando los diez años de pertenencia de Polonia a la UE, ha conseguido ganar diferentes premios de diseño y versatilidad (IDOL 2014, TARBUD 2015,Medalla de oro en la Feria de Kielce y el premio al Mejor diseño en el Arena Design 2016 en Polonia).", dimention_x: 200, dimention_y: 200, dimention_z: 190)
 impresora4.save
-impresora4.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_4.jpg'), filename: 'impresora_3d_4.jpg')
+impresora4.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_4.jpg')), filename: 'impresora_3d_4.jpg')
 
 impresora5 = Printer.new(name: 'IMPRESORA 3D XYZ DA VINCI 1.0A', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "La impresora Da Vinci 1.0 A permite la creación de diseños propios a color, con un material altamente resistente. Sin duda, la herramienta que necesitas para potenciar tu negocio o para uso personal. Es un equipo monocolor que imprime material ABS/PLA, permitiéndote tener más y mejores posibilidades de crear diseños. Cuenta con autonomía, ya que tiene la capacidad de imprimir sin la necesidad de estar conectada a un computador y es muy fácil uso, pues no es necesario ser un experto para aprender a usarla y te harás un experto en cuestión de minutos.", dimention_x: 200, dimention_y: 200, dimention_z: 200)
 impresora5.save
-impresora5.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_5.jpg'), filename: 'impresora_3d_5.jpg')
+impresora5.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_5.jpg')), filename: 'impresora_3d_5.jpg')
 
 impresora6 = Printer.new(name: 'mElephant Impresora 3D', store_id: (rand((Store.first.id)..(Store.last.id))), base_price: (rand(1000..5000)), hour_price: (rand(1000..5000)), description: "Tanto la precisión como la exactitud important en la impresión 3D. mElephant tiene la correa dentada y el tornillo con el mismo paso, alcanza una alta-precisión en los ejes XY con una resolución de 0.1mm, y una resolución de cada capa de 0.1-0.3mm, lo que significa que puedes producir exactamente el diseño que realices.", dimention_x: 416, dimention_y: 344, dimention_z: 330)
 impresora6.save
-impresora6.image.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/images/impresora_3d_6.jpg'), filename: 'impresora_3d_6.jpg')
+impresora6.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'impresora_3d_6.jpg')), filename: 'impresora_3d_6.jpg')
 
 #Creación de tecnologías
 Technology.create(name: 'FDM', description: "es el método de impresión 3D más común en impresoras 3D de escritorio. El filamento termoplástico se calienta y se extruye en coordenadas de X e Y a través del cabezal de extrusión, mientras que la superficie de impresión va bajando el objeto capa por capa en la dirección Z. De este modo el objeto se imprime de abajo hacia arriba. Si se diera el caso de que un modelo tuviera partes que sobresalen, necesitará estructuras de soporte que se puedan quitar una vez que la impresión haya finalizado. Este tipo de impresora 3D es una manera rentable de desarrollar un producto y de crear de forma rápida prototipos en los sectores de pequeñas empresas y la educación, ya que es capaz de fabricar piezas robustas de manera eficiente y rápida.")
