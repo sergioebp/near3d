@@ -24,6 +24,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'image_processing', '~> 1.2'
 gem 'faker'
+gem "aws-sdk-s3", require: false
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
