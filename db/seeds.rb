@@ -22,19 +22,19 @@ end
 #Creación de diseños
 diseño1 = Design.new(name: 'Dinosaurio', description: 'Juguete con articulaciones funcionales. no necesita soportes, imprime y usa.', public: true, user_id: (rand((User.first.id)..(User.last.id))))
 diseño1.save 
-diseño1.file.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/javascripts/Flexi-Rex-improved.stl'), filename: 'Flexi-Rex-improved.stl')
+diseño1.file.attach(io: File.open(Rails.root.join('app', 'assets', 'stl', 'Flexi-Rex-improved.stl')), filename: 'Flexi-Rex-improved.stl')
 
-diseño2 = Design.new(name: 'Trapezoide', description: 'Es como un remolino, para imprimirla recuerda generar soportes', public: true, user_id: (rand((User.first.id)..(User.last.id))))
-diseño2.save 
-diseño2.file.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/javascripts/TrapezoidThread.stl'), filename: 'TrapezoidThread.stl')
+diseño2 = Design.new(name: 'Trapezoide', description: 'Es como un remolino, para imprimirla recuerda generar soportes', public: true, user_id: rand(User.first.id..User.last.id))
+diseño2.save
+diseño2.file.attach(io: File.open(Rails.root.join('app', 'assets', 'stl', 'TrapezoidThread.stl')), filename: 'TrapezoidThread.stl')
 
 diseño3 = Design.new(name: 'Camión de juguete', description: 'versión 3 del camión de juguete, después de imprimir aplica fuerza para liberar el eje de rotación', public: true, user_id: (rand((User.first.id)..(User.last.id))))
 diseño3.save 
-diseño3.file.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/javascripts/toy-truck10-v3a.stl'), filename: 'toy-truck10-v3a.stl')
+diseño3.file.attach(io: File.open(Rails.root.join('app', 'assets', 'stl', 'toy-truck10-v3a.stl')), filename: 'toy-truck10-v3a.stl')
 
 diseño4 = Design.new(name: 'sujetacolores', description: 'sujetacolores con forma geométrica básica para facilidad de impresión, no necesita soportes', public: true, user_id: (rand((User.first.id)..(User.last.id))))
 diseño4.save 
-diseño4.file.attach(io: File.open('/home/lenovo/Escritorio/Near3d/app/assets/javascripts/Lee_Smith_Pen_Holder.STL'), filename: 'Lee_Smith_Pen_Holder.STL')
+diseño4.file.attach(io: File.open(Rails.root.join('app', 'assets', 'stl', 'Lee_Smith_Pen_Holder.STL')), filename: 'Lee_Smith_Pen_Holder.STL')
 
 #Creación de tiendas
 3.times do 
